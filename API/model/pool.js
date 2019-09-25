@@ -13,6 +13,7 @@ const Pool = (sequelize, Sequelize) => {
 
   pool.associate = (models) => {
     pool.hasOne(models.address);
+    pool.hasMany(models.schedule);
   }
   return pool
 };

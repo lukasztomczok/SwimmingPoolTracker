@@ -5,6 +5,8 @@ const router = express.Router();
 
 router.get('/', poolsController.getPools);
 
+router.get('/:poolId/lastoccupancy', poolsController.getLastOccupancy);
+
 router.get('/:poolId', poolsController.getPool);
 
 router.post('/', poolsController.addPool);

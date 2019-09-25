@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const poolModel = require('../model/pool');
 const addressModel = require('../model/address');
+const scheduleModel = require('../model/schedule');
 const db = {};
 var sequelize = new Sequelize('pools', 'postgres', 'qaz123wsx', {
   host: 'localhost',
@@ -9,9 +10,11 @@ var sequelize = new Sequelize('pools', 'postgres', 'qaz123wsx', {
 
 const pool = poolModel(sequelize, Sequelize);
 const address = addressModel(sequelize, Sequelize);
+const schedule = scheduleModel(sequelize, Sequelize);
 
 db['pool'] = pool;
 db['address'] = address;
+db['schedule'] = schedule;
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
@@ -19,5 +22,5 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-sequelize.sync();
+sequelize.sync({ force: true });
 module.exports = db;

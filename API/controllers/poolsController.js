@@ -1,4 +1,16 @@
+const repo = require('../repository/scheduleRepository');
 const dc = require('../data/poolsContext');
+
+const getLastOccupancy = async (req, res, next) => {
+  try {
+    const occupancy = await repo.getLastOccupancy();
+    return res.json(occupancy);
+  }
+  catch (error) {
+    next(error);
+  }
+  return res.status(400).send('Bad request');
+}
 
 const getPools = async (req, res, next) => {
   try {
@@ -46,4 +58,4 @@ const addPool = async (req, res, next) => {
   return res.status(400).send('Bad Request');
 };
 
-module.exports = { getPool, getPools, addPool };
+module.exports = { getLastOccupancy, getPool, getPools, addPool };
