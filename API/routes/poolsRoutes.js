@@ -11,6 +11,4 @@ router.get('/:poolId/occupancy?', poolsController.getOccupancy);
 
 router.get('/:poolId', poolsController.getPool);
 
-router.post('/', poolsController.addPool);
-
 module.exports = router;
