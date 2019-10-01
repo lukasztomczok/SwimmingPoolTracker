@@ -1,7 +1,7 @@
 const { Op } = require('sequelize');
 const dc = require('../data/poolsContext');
 const poolMapper = require('../mapper/poolMapper');
-const occupancyDto = require('../model/dto/occupancyDto');
+const occupancyMapper = require('../mapper/occupancyMapper');
 
 const getLastOccupancy = async () => {
   const occupancy = await dc.schedule.findAll({
@@ -23,8 +23,8 @@ const getDayOccupancy = async (getDay) => {
     ]
   });
 
-  const odto = new occupancyDto(getDay, schedules);
-  return odto;
+  const occupancyDto = occupancyMapper(getDay, schedules);
+  return occupancyDto;
 };
 
 const getTimeOccupancy = async (getDay, getTime) => {
