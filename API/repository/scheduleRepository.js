@@ -40,7 +40,8 @@ const getTimeOccupancy = async (getDay, getTime) => {
       ['startTime', 'ASC']
     ]
   });
-  return occupancy
+  const occupancyDto = occupancyMapper(getDay, schedules);
+  return occupancyDto;
 };
 
 const getPools = async () => {
