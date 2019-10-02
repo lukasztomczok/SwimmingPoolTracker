@@ -31,7 +31,6 @@ const getLastOccupancy = async (req, res, next) => {
 
 const getPools = async (req, res, next) => {
   try {
-    throw new Error("aaa");
     const pools = await repo.getPools();
     return res.json(pools);
   } catch (error) {
