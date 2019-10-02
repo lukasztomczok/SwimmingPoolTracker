@@ -1,5 +1,5 @@
 const repo = require('../repository/scheduleRepository');
-const dc = require('../data/poolsContext');
+const log = require('../helpers/logConfig');
 
 const getOccupancy = async (req, res, next) => {
   try {
@@ -31,9 +31,11 @@ const getLastOccupancy = async (req, res, next) => {
 
 const getPools = async (req, res, next) => {
   try {
+    throw new Error("aaa");
     const pools = await repo.getPools();
     return res.json(pools);
   } catch (error) {
+    log.info(error);
     next(error);
   }
   return res.status(400).send('Bad Request');
