@@ -1,4 +1,4 @@
-const Address = (sequelize, Sequelize) => {
+module.exports = (sequelize, Sequelize) => {
   var address = sequelize.define('address', {
     street: {
       type: Sequelize.STRING
@@ -13,10 +13,8 @@ const Address = (sequelize, Sequelize) => {
       tableName: 'Address'
     });
 
-    address.associate = (models) => {
-      address.belongsTo(models.pool);
-    }
+  address.associate = (models) => {
+    address.belongsTo(models.pool);
+  }
   return address;
 };
-
-module.exports = Address;
