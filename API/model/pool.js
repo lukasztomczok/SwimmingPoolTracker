@@ -1,4 +1,4 @@
-const Pool = (sequelize, Sequelize) => {
+module.exports = (sequelize, Sequelize) => {
   var pool = sequelize.define('pool', {
     shortName: {
       type: Sequelize.STRING,
@@ -35,5 +35,3 @@ const Pool = (sequelize, Sequelize) => {
   }
   return pool
 };
-
-module.exports = Pool;

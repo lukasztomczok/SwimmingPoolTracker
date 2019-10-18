@@ -1,4 +1,4 @@
-const Schedule = (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
   const schedule = sequelize.define('schedule', {
     day: {
       type: DataTypes.DATEONLY
@@ -22,5 +22,3 @@ const Schedule = (sequelize, DataTypes) => {
   }
   return schedule;
 };
-
-module.exports = Schedule;
