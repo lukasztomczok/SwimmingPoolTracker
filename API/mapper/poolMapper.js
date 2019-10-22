@@ -1,6 +1,10 @@
 const PoolDto = require('../model/dto/poolDto');
 
 const mapPool = (pool) => {
+  if (!pool) {
+    throw new Error('No parameter!');
+  }
+
   if (Array.isArray(pool)) {
     return pool.map((item) => {
       return map(item);

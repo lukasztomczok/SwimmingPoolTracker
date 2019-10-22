@@ -2,8 +2,9 @@ const { Op } = require('sequelize');
 const poolMapper = require('../mapper/poolMapper');
 const occupancyMapper = require('../mapper/occupancyMapper');
 
-const scheduleRepository = ({poolsContext}) => {
+const scheduleRepository = ({ poolsContext }) => {
   const dc = poolsContext;
+
   const getLastOccupancy = async () => {
     const occupancy = await dc.schedule.findAll({
       limit: 1,
@@ -52,7 +53,7 @@ const scheduleRepository = ({poolsContext}) => {
 
   const getPool = async (poolId) => {
     const pool = await dc.pool.findByPk(poolId, { include: dc.address });
-    return poolMapper(pool);
+    return poolMapper(pool);    
   };
 
   return { getLastOccupancy, getDayOccupancy, getTimeOccupancy, getPools, getPool };
